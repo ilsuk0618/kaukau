@@ -1,0 +1,14 @@
+i=int(input())
+cnt=0
+
+for _ in range(i):
+    n=int(input())
+    while n!=1:    
+        if n%2==0:
+            n=n//2
+            cnt+=1
+        else:
+            n=n*3+1
+            cnt+=1
+    print(cnt)
+    cnt=0
