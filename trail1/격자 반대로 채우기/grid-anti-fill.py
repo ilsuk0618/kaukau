@@ -1,50 +1,25 @@
+
+##값을 규칙을 만들어 변화시키기 보다는 순차적으로 값을 늘려가되, 넣는 위치를 지정해주는 편이 낫다. 
 n=int(input())
 
-arr_2d=[[0 for _ in range(n)]
+arr=[[0 for _ in range(n)]
 for _ in range(n)
 ]
 
-if n%2==0:
-    num=n**2-n+1
-else:
-    num=n**2
+cnt=1
 
-if n%2==0:
-    num2=1
-    num3=2*n-1
-else:
-    num2=2*n-1
-    num3=1
-num4=num
-
-for i in range(n):
-    for j in range(n):
-        if n%2!=0:
-            if j%2!=0:
-                arr_2d[i][j]=num
-                num-=num3
-            else: 
-                arr_2d[i][j]=num
-                num-=num2
-        else:
-            if j%2!=0:
-                arr_2d[i][j]=num
-                num-=num3
-            else: 
-                arr_2d[i][j]=num
-                num-=num2  
-    if n%2==0:
-        num4+=1
-        num2+=2
-        num3-=2
+for col in range(n-1, -1, -1):
+    if (n-1-col)%2==0:
+        ##단순히 col값이 짝수, 홀수 인지를 보며 n 값에 따라서 감소해야하는곳이 달라진다. 그래서 경우를 n이 짝,홀수로 나눌수도 있지만 이는 코드를 두번 작성해야하기에 다른 조건을 잡아줘야함. 
+        for row in range(n-1, -1, -1):
+            arr[row][col] = cnt
+            cnt+=1
     else:
-        num4-=1
-        num2-=2
-        num3+=2
-    num=num4
-    
+        for row in range(n):
+            arr[row][col] = cnt
+            cnt+=1
 
-for elem in arr_2d:
+for elem in arr:
     for ans in elem:
         print(ans, end=" ")
     print()
