@@ -1,7 +1,5 @@
-arr=[]
-for _ in range(4):
-    i=input()
-    arr.append(i)
+arr=[input()
+for _ in range(4)]
 arr.reverse()
 for elem in arr:
     print(elem)
