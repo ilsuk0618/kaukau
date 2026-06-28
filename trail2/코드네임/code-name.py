@@ -1,25 +1,23 @@
-MAX_N = 5
+# 클래스 선언
+class User:
+    def __init__(self, code_name, score):
+        self.code_name = code_name
+        self.score = score
 
-codenames = []
-scores = []
-for _ in range(MAX_N):
-    codename, score = input().split()
-    codenames.append(codename)
-    scores.append(int(score))
-class code:
-    def __init__(self,name,sc):
-        code.name=name
-        code.sc=sc
-code1 = code(codenames[0],scores[0])
-code2 = code(codenames[1],scores[1])
-code3 = code(codenames[2],scores[2])
-code4 = code(codenames[3],scores[3])
-code5 = code(codenames[4],scores[4])
-cnt=0
-min_val=100
-for i in range(MAX_N):
-    if min_val>=scores[i]:
-        min_val=scores[i]
-        cnt=i    
 
-print(codenames[cnt], scores[cnt])
+# 변수 선언 및 입력
+users = []
+
+for _ in range(5):
+    code_name, score = tuple(input().split())
+    users.append(User(code_name, int(score)))
+
+
+# 최소 점수를 갖는 유저 찾기
+min_idx = 0
+for i in range(1, 5):
+    if users[min_idx].score > users[i].score:
+        min_idx = i
+
+# 출력
+print(users[min_idx].code_name, users[min_idx].score)
